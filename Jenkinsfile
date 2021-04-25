@@ -1,3 +1,5 @@
+Jenkinsfile = '/var/jenkins_home/jobs/Jenkins-Image-Job'
+
 pipeline {
   environment {
     registry = '111122718813.dkr.ecr.us-east-2.amazonaws.com/askossivi'
