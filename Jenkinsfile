@@ -1,5 +1,5 @@
-Jenkinsfile = '/var/jenkins_home/workspace/Jenkins-Image-Job@script'
-docker_file_dir = '/var/jenkins_home/workspace/Jenkins-Image-Job@script'
+Jenkinsfile_dir = '/var/jenkins_home/workspace/Jenkins-Image-Job@script'
+Dodkerfile_dir = '/var/jenkins_home/workspace/Jenkins-Image-Job@script'
 
 pipeline {
   environment {
