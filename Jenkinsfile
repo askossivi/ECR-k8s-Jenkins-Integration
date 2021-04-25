@@ -1,5 +1,5 @@
-Jenkinsfile = '/var/jenkins_home/jobs/Jenkins-Image-Job'
-docker_file_dir = '/var/jenkins_home/jobs/Jenkins-Image-Job'
+///Jenkinsfile = '/var/jenkins_home/jobs/Jenkins-Image-Job'
+///docker_file_dir = '/var/jenkins_home/jobs/Jenkins-Image-Job'
 
 pipeline {
   environment {
