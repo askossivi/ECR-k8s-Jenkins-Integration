@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'git@github.com:askossivi/ECR-k8s-Jenkins-Integration.git'
+        git 'https://github.com/askossivi/ECR-k8s-Jenkins-Integration.git'
       }
     }
     stage('Building image') {
