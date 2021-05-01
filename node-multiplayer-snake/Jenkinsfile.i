@@ -1,4 +1,8 @@
-node ('Ubuntu-app-agent'){  
+/// Define the dockerfile dir
+def DOCKERFILE_DIR = '/data/jenkins_data/workspace/Multiplayer/node-multiplayer-snake'
+
+
+node ('app-agent'){  
     def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -25,11 +29,11 @@ node ('Ubuntu-app-agent'){
     }
   
     
-   /* stage('Pull-image-server') {
+    stage('Pull-image-server') {
     
-     *    sh "docker-compose down"
-      *   sh "docker-compose up -d"	
-     * }  */
+        sh "docker-compose down"
+        sh "docker-compose up -d"	
+     }  
     
     stage('DAST')
         {
