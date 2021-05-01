@@ -1,29 +1,21 @@
-/// Define the dockerfile dir
-def DOCKERFILE_DIR = '/data/jenkins_data/workspace/Multiplayer/node-multiplayer-snake'
-
-pipeline {
-  environment {
-    registry = "devtraining/newserver"
-    registryCredential = 'dockerhub'
-    dockerImage = ''
-  }
-  agent any
+node ('Ubuntu-app-agent'){  
+    def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
-    }
+    }  
     stage('SAST'){
         build 'SECURITY-SAST-SNYK'
     }
 
-
+    
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("devtraining/snake-image","$DOCKERFILE_DIR")
+        app = docker.build("devtraining/snake-image")
     }
     stage('Post-to-dockerhub') {
-
+    
      docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("latest")
         			}
@@ -31,17 +23,17 @@ pipeline {
     stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
     }
-
-
+  
+    
    /* stage('Pull-image-server') {
-
+    
      *    sh "docker-compose down"
-      *   sh "docker-compose up -d"
+      *   sh "docker-compose up -d"	
      * }  */
-
+    
     stage('DAST')
         {
         build 'SECURITY-DAST-OWASP_ZAP'
         }
-
+ 
 }
