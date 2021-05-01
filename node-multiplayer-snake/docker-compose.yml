@@ -1,0 +1,10 @@
+version: '2'
+services:
+  snake:
+    image: 'snake-image:latest'
+    environment:
+      - "PORT:3000"
+    ports:
+      - "8090:3000"
+    volumes:
+      - ./:/app
